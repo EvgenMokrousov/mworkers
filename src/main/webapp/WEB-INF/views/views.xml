@@ -1,0 +1,29 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+       <definition name="template"
+                   template="/WEB-INF/views/main_template.jsp">
+       </definition>
+
+    <definition name="workers" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/workers.jsp" />
+    </definition>
+
+    <definition name="db_editor" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/db_editor.jsp" />
+    </definition>
+
+    <!--
+            <definition name="select" extends="template">
+                  <put-attribute name="content" value="/WEB-INF/views/select.jsp" />
+        <put-attribute name="side" value="/WEB-INF/views/tiles/alreadyamember.jsp" />
+        </definition>
+        -->
+<!--
+ <definition name="admin" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/admin.jsp" />
+ </definition>
+-->
+</tiles-definitions>
