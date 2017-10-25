@@ -9,6 +9,7 @@ import ru.moneta.mes.tst.model.Worker;
 import ru.moneta.mes.tst.service.TabelService;
 import ru.moneta.mes.tst.service.WorkerService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;

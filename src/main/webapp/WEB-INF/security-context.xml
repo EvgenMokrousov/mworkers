@@ -6,24 +6,31 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
 
-    <http auto-config="true" use-expressions="false" access-denied-page="/error403.jsp">
+    <http auto-config="true" use-expressions="true" access-denied-page="/error403.jsp">
+    <!--<http auto-config="true" use-expressions="true">-->
         <form-login login-page="/login.jsp" default-target-url="/index"
                     authentication-failure-url="/login.jsp?error=true" />
         <logout logout-url="/logout" logout-success-url="/index" />
 
-        <intercept-url pattern="/index" filters="none" />
-        <intercept-url pattern="/" filters="none" />
-        <intercept-url pattern="/db_editor" access="ROLE_USER" />
+        <intercept-url pattern="/" requires-channel="http" />
+        <intercept-url pattern="/index" requires-channel="http" />
+        <intercept-url pattern="/db_editor*" access="hasRole('ROLE_USER')" requires-channel="https"/>
+
+        <intercept-url pattern="/login*" requires-channel="https" />
+        <intercept-url pattern="/**" requires-channel="https" />
         <remember-me />
+        <!--<session-management session-fixation-protection="none" />-->
+
     </http>
 
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="user1" password="1111" authorities="ROLE_USER" />
-                <user name="user2" password="2222" authorities="ROLE_USER" disabled="true" />
-                <user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER" />
-            </user-service>
+            <jdbc-user-service data-source-ref="dataSource"/>
+            <!--<user-service>-->
+                <!--<user name="user1" password="1111" authorities="ROLE_USER" />-->
+                <!--<user name="user2" password="2222" authorities="ROLE_USER" disabled="true" />-->
+                <!--<user name="admin" password="pass" authorities="ROLE_ADMIN,ROLE_USER" />-->
+            <!--</user-service>-->
         </authentication-provider>
     </authentication-manager>
 

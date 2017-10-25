@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  */
 
+//import org.springframework.security.access.annotation.Secured;
 import ru.moneta.mes.tst.model.Tabel;
 import ru.moneta.mes.tst.model.Worker;
 import ru.moneta.mes.tst.persistence.TabelDAO;
